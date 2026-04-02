@@ -28,3 +28,6 @@ Procedimento via VS Code:
 1. Abra a pasta do projeto no Visual Studio Code.
 2. Instale a extensão "Live Server".
 3. Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".
+
+## Créditos
+- Favicon (Sudoku icon) criado por [Freepik - Flaticon](https://www.flaticon.com/free-icons/sudoku).
