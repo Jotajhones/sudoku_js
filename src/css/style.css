@@ -18,6 +18,19 @@
     /* Cores de Erro */
     --cell-bg-error: #ffcccc;
     --cell-text-error: #a94442;
+
+    /* highlights */
+    --bg-highlight: #e2eafc;       
+    --bg-same-number: #c1d3fe;
+
+    /* Cores de UI e Botões */
+    --ui-primary: #0056b3;
+    --ui-primary-hover: #004494;
+    --ui-danger: #e74c3c;
+    --ui-danger-hover: #c0392b;
+    --text-light: #ffffff;
+    --toggle-bg: #cccccc;
+    --toggle-active: #27ae60;
 }
 
 body {
@@ -58,7 +71,7 @@ body {
     border: none;
     background-color: var(--cell-bg);
     color: var(--cell-text-editable);
-   
+    cursor: pointer;   
 }
 
 /* Célula Fixa (Pistas do Jogo) */
@@ -90,4 +103,157 @@ body {
 .cell-error {
     background-color: var(--cell-bg-error);
     color: var(--cell-text-error);
+}
+
+.cell-highlight {
+    background-color: var(--bg-highlight);
+}
+
+.cell-same-number {
+    background-color: var(--bg-same-number);
+}
+
+.cell:focus {
+    background-color: #b6ccfe; 
+    outline: none;
+}
+
+/* =========================================
+   UI e Controles (Control Group & Timer)
+========================================= */
+
+.control-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: var(--grid-size);
+    background-color: var(--cell-bg);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e1e4e8;
+}
+
+/* O Cronômetro */
+.timer-container {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: monospace; /* Monospace evita que os números fiquem "dançando" */
+    color: var(--border-color);
+    background-color: var(--bg-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   Toggle Switch Customizado (Modo Purista)
+========================================= */
+
+/* Esconde o checkbox original feio */
+#purist-toggle {
+    display: none;
+}
+
+/* Transforma a label no nosso novo botão */
+.control-group label {
+    position: relative;
+    padding-left: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--border-color);
+    min-height: 24px;
+    user-select: none; /* Evita selecionar o texto ao clicar rápido */
+}
+
+/* O "Trilho" do Toggle (Fundo cinza) */
+.control-group label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 22px;
+    background-color: var(--toggle-bg);
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* A "Bolinha" do Toggle */
+.control-group label::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: var(--cell-bg);
+    border-radius: 50%;
+    transition: left 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Estado Ativado (Quando o checkbox invisível estiver marcado) */
+#purist-toggle:checked + label::before {
+    background-color: var(--toggle-active);
+}
+
+#purist-toggle:checked + label::after {
+    left: 21px; /* Move a bolinha para a direita */
+}
+
+/* =========================================
+   Botões de Ação (Novo Jogo & Reiniciar)
+========================================= */
+
+.controls-wrapper {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    max-width: var(--grid-size);
+}
+
+.controls-wrapper button {
+    flex: 1; /* Faz os botões dividirem o espaço 50/50 */
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Animação de "Aperto" ao clicar */
+.controls-wrapper button:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo Botão Novo Jogo */
+#btn-new-game {
+    background-color: var(--ui-primary);
+}
+
+#btn-new-game:hover {
+    background-color: var(--ui-primary-hover);
+}
+
+/* Estilo Botão Reiniciar */
+#btn-restart {
+    background-color: var(--ui-primary);
+}
+
+#btn-restart:hover {
+    background-color: var(--ui-primary-hover);
 }

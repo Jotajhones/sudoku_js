@@ -1,27 +1,30 @@
 # Sudoku JS
 
-Projeto de implementação do jogo clássico Sudoku desenvolvido inteiramente em JavaScript Vanilla (ES6+), HTML5 e CSS3.
+Implementação do jogo clássico Sudoku em JavaScript Vanilla (ES6+), HTML5 e CSS3.
 
-Este projeto foi construído com propósitos acadêmicos e focado no estudo aprofundado de:
-- Programação Orientada a Objetos (POO) em JavaScript.
-- Padrão de Arquitetura MVC (Model-View-Controller) para separação de responsabilidades.
-- Algoritmos de validação de estado e manipulação de matrizes bidimensionais.
-- Lógica heurística e algoritmos de Backtracking (em desenvolvimento para geração dinâmica de tabuleiros).
+Projeto focado na aplicação de Programação Orientada a Objetos (POO), arquitetura MVC para aplicações client-side e implementação de algoritmos heurísticos.
 
-## Arquitetura (v1.0 - MVP)
+## Funcionalidades (v1.1)
+- Geração dinâmica de tabuleiros com solução única via algoritmo de Backtracking.
+- Validação de estado (linhas, colunas e quadrantes) em tempo real.
+- Auxílio visual via manipulação de DOM (crosshatching e números equivalentes).
+- Modo Purista: toggle para supressão de validação visual de erros.
+- Controles de fluxo de partida (Novo Jogo, Reiniciar) e Timer isolado.
+- Interface customizada baseada em variáveis CSS (100% vibecoded).
 
-O código está estruturado para manter o domínio da aplicação estritamente separado da interface gráfica:
-- `Model` (SudokuBoard): Única fonte de verdade. Responsável pela matriz 9x9, regras de validação do Sudoku e condição de vitória.
-- `View` (SudokuUI): Camada burra de renderização. Apenas reflete o estado atual do Model na DOM.
-- `Controller` (GameController): Orquestra a inicialização, injeta o puzzle inicial e gerencia os eventos de input, garantindo a sincronia de estado entre View e Model.
+## Arquitetura
+O sistema opera sob o padrão Model-View-Controller (MVC), garantindo a separação entre regras de negócio e renderização:
 
-## Como Rodar o Projeto
+- Model (SudokuBoard): Única fonte de verdade dos dados. Mantém o estado da matriz 9x9, executa a validação lógica, implementa o Backtracking para preenchimento/remoção de nós e gerencia o snapshot do tabuleiro inicial.
+- View (SudokuUI): Camada exclusiva de apresentação. Expõe métodos para renderizar inputs, injetar classes CSS de estado (highlights e erros) e aplicar restrições de leitura em células pré-preenchidas.
+- Controller (GameController): Ponto de integração. Implementa Event Delegation no container principal para capturar inputs e cliques, orquestrando as atualizações no Model e despachando comandos de repintura para a View.
+- Utils (Timer): Classe auxiliar para controle e formatação do loop temporal.
 
-Como o projeto utiliza ES6 Modules (`import`/`export`) nativos do JavaScript no frontend, por questões de segurança dos navegadores modernos (CORS), não é possível executar o jogo apenas abrindo o arquivo `index.html` com um duplo clique (protocolo `file://`).
+## Como Executar
 
-Você precisará servir os arquivos através de um servidor local.
+O projeto utiliza ES6 Modules (`import`/`export`). Devido a políticas de segurança dos navegadores modernos (CORS) referentes ao protocolo `file://`, a aplicação não pode ser executada com um duplo clique no arquivo HTML. É necessário um servidor estático local.
 
-### Opção 1: VS Code (Recomendada)
+Procedimento via VS Code:
 1. Abra a pasta do projeto no Visual Studio Code.
 2. Instale a extensão "Live Server".
 3. Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server".

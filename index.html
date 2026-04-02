@@ -14,10 +14,23 @@
             <h1>Sudoku JS</h1>
         </header>
 
+        <div class="control-group">
+            <input type="checkbox" id="purist-toggle">
+            <label for="purist-toggle">Modo Purista (Sem dicas de erro)</label>
+
+            <div class="timer-container">
+                <span id="game-timer">00:00</span>
+            </div>
+        </div>
+
         <section id="board-container" class="board-wrapper grid-9x9">
         </section>
 
         <section id="controls-container" class="controls-wrapper">
+
+            <button id="btn-new-game">Novo Jogo</button>
+            <button id="btn-restart">Reiniciar</button>
+
         </section>
     </main>
     <script type="module" src="src/js/main.js"></script>
